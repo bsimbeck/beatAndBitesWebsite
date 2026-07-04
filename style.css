@@ -311,8 +311,14 @@ body {
   color: var(--ink);
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 0.6rem;
+}
+.lineup-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
 }
 .lineup-name {
   display: flex;
@@ -324,8 +330,14 @@ body {
   color: var(--teal);
   font-size: 1.3rem;
 }
+.lineup-time {
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--green-mid);
+  white-space: nowrap;
+}
 .lineup-toggle {
-  width: 100%;
   background: none;
   border: none;
   font: inherit;
@@ -333,7 +345,6 @@ body {
   padding: 0;
   cursor: pointer;
 }
-.lineup-toggle .name-text { margin-right: auto; }
 .lineup-toggle .toggle-icon {
   color: var(--green-mid);
   transition: transform 0.2s ease;

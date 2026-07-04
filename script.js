@@ -7,12 +7,12 @@ const EVENT = {
 };
 
 const MUSICIANS = [
-  { name: "Folk Indie Bob", stageMap: true },
-  { name: "Shrub", stageMap: true },
-  { name: "Munhall Community Band", stageMap: true },
-  { name: "MCB Jazz", stageMap: true },
-  { name: "MCB Woodwind Ensemble" },
-  { name: "MCB Flute Choir" },
+  { name: "MCB Flute Choir", time: "1:25 PM" },
+  { name: "Folk Indie Bob", time: "1:30 PM", stageMap: true },
+  { name: "MCB Jazz", time: "2:50 PM", stageMap: true },
+  { name: "MCB Woodwind Ensemble", time: "3:55 PM" },
+  { name: "Shrub", time: "4:15 PM", stageMap: true },
+  { name: "Munhall Community Band", time: "5:45 PM", stageMap: true },
 ];
 
 const VENDORS = [
@@ -43,15 +43,24 @@ function renderLineup() {
   const list = document.getElementById("lineup-list");
   list.innerHTML = MUSICIANS.map((m, i) => {
     if (!m.stageMap) {
-      return `<li><span class="lineup-name">${m.name}</span></li>`;
+      return `
+      <li>
+        <div class="lineup-row">
+          <span class="lineup-name"><span class="name-text">${m.name}</span></span>
+          <span class="lineup-time">${m.time}</span>
+        </div>
+      </li>`;
     }
     const mapId = `stage-map-${i}`;
     return `
     <li>
-      <button type="button" class="lineup-name lineup-toggle" aria-expanded="false" aria-controls="${mapId}">
-        <span class="name-text">${m.name}</span>
-        <span class="toggle-icon" aria-hidden="true">▾</span>
-      </button>
+      <div class="lineup-row">
+        <button type="button" class="lineup-name lineup-toggle" aria-expanded="false" aria-controls="${mapId}">
+          <span class="name-text">${m.name}</span>
+          <span class="toggle-icon" aria-hidden="true">▾</span>
+        </button>
+        <span class="lineup-time">${m.time}</span>
+      </div>
       <img id="${mapId}" class="stage-map-thumb" src="assets/mainstage-map.png" alt="Main stage map for ${m.name}" hidden>
     </li>`;
   }).join("");
@@ -87,7 +96,7 @@ function renderSearch(query) {
     ...MUSICIANS.filter((m) => m.name.toLowerCase().includes(q)).map((m) => ({
       name: m.name,
       type: "musician",
-      label: "Musician",
+      label: m.time,
     })),
     ...VENDORS.filter((n) => n.toLowerCase().includes(q)).map((n) => ({
       name: n,
