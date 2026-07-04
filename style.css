@@ -170,15 +170,11 @@ body {
 .logo-text span { font-size: 0.7rem; font-weight: 600; }
 
 .badge-register {
-  background: var(--cream);
-  border: 2px solid var(--teal);
-  color: var(--teal);
-  text-decoration: none;
-}
-.badge-free {
   background: var(--teal);
+  border: 2px solid var(--teal);
   color: #fff;
   font-weight: 800;
+  text-decoration: none;
 }
 
 .presents {
