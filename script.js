@@ -36,7 +36,12 @@ const INFO_ENTRIES = [
   { name: "Free Concert", detail: "No tickets needed — just show up!" },
   { name: "1:00 PM – 7:30 PM", detail: "Event hours" },
   { name: "Clairton Park Lodge", detail: "499-401 Gulch Way, Clairton, PA 15025" },
-  { name: "Restrooms", detail: "See the restroom map in Event Info" },
+  {
+    name: "Restrooms",
+    detail: "Located near the main lodge",
+    map: "assets/restroomMap.jpeg",
+    mapAlt: "Map showing restroom locations at Clairton Park Lodge",
+  },
 ];
 
 function renderLineup() {
@@ -109,7 +114,13 @@ function renderSearch(query) {
     ...INFO_ENTRIES.filter(
       (e) =>
         e.name.toLowerCase().includes(q) || e.detail.toLowerCase().includes(q)
-    ).map((e) => ({ name: e.name, type: "info", label: e.detail })),
+    ).map((e) => ({
+      name: e.name,
+      type: "info",
+      label: e.detail,
+      map: e.map,
+      mapAlt: e.mapAlt,
+    })),
   ];
 
   results.hidden = false;
@@ -122,14 +133,31 @@ function renderSearch(query) {
 
   results.classList.remove("empty");
   results.innerHTML = matches
-    .map(
-      (m) => `
-      <div class="result-item">
+    .map((m) => {
+      const clickable = m.map ? " result-item-clickable" : "";
+      const attrs = m.map
+        ? ` role="button" tabindex="0" data-name="${escapeHtml(m.name)}" data-detail="${escapeHtml(m.label)}" data-map="${escapeHtml(m.map)}" data-map-alt="${escapeHtml(m.mapAlt || "")}"`
+        : "";
+      return `
+      <div class="result-item${clickable}"${attrs}>
         <span class="r-name">${escapeHtml(m.name)}</span>
         <span class="r-type r-type-${m.type}">${escapeHtml(m.label)}</span>
-      </div>`
-    )
+      </div>`;
+    })
     .join("");
+}
+
+function openDetailModal({ name, detail, map, mapAlt }) {
+  document.getElementById("detail-modal-title").textContent = name;
+  document.getElementById("detail-modal-text").textContent = detail;
+  const img = document.getElementById("detail-modal-img");
+  img.src = map;
+  img.alt = mapAlt || `Map for ${name}`;
+  document.getElementById("detail-modal").hidden = false;
+}
+
+function closeDetailModal() {
+  document.getElementById("detail-modal").hidden = true;
 }
 
 function escapeHtml(str) {
@@ -180,4 +208,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.getElementById("add-to-cal").addEventListener("click", downloadIcs);
   document.getElementById("add-to-cal-2").addEventListener("click", downloadIcs);
+
+  const results = document.getElementById("search-results");
+  const openFromResultItem = (item) => {
+    if (!item || !item.dataset.map) return;
+    openDetailModal({
+      name: item.dataset.name,
+      detail: item.dataset.detail,
+      map: item.dataset.map,
+      mapAlt: item.dataset.mapAlt,
+    });
+  };
+  results.addEventListener("click", (e) => {
+    openFromResultItem(e.target.closest(".result-item-clickable"));
+  });
+  results.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    const item = e.target.closest(".result-item-clickable");
+    if (!item) return;
+    e.preventDefault();
+    openFromResultItem(item);
+  });
+
+  const modal = document.getElementById("detail-modal");
+  modal.addEventListener("click", (e) => {
+    if (e.target.closest("[data-close]")) closeDetailModal();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !modal.hidden) closeDetailModal();
+  });
 });
