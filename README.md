@@ -1,2 +1,2 @@
 # beatAndBitesWebsite
-Website for Beats and Bites Concert.
+Website for the Beats and Bites Concert.
