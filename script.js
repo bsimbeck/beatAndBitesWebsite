@@ -38,7 +38,7 @@ const INFO_ENTRIES = [
   { name: "Clairton Park Lodge", detail: "499-401 Gulch Way, Clairton, PA 15025" },
   {
     name: "Restrooms",
-    detail: "Located near the main lodge",
+    detail: "Located near the pavilion and baseball field",
     map: "assets/restroomMap.jpeg",
     mapAlt: "Map showing restroom locations at Clairton Park Lodge",
   },
