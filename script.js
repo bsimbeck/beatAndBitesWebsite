@@ -7,12 +7,12 @@ const EVENT = {
 };
 
 const MUSICIANS = [
-  "Folk Indie Bob",
-  "Shrub",
-  "Munhall Community Band",
-  "MCB Jazz",
-  "MCB Woodwind Ensemble",
-  "MCB Flute Choir",
+  { name: "MCB Flute Choir", time: "1:25 PM" },
+  { name: "Folk Indie Bob", time: "1:30 PM", stageMap: true, location: "Main Stage" },
+  { name: "MCB Jazz", time: "2:50 PM", stageMap: true, location: "Main Stage" },
+  { name: "MCB Woodwind Ensemble", time: "3:55 PM" },
+  { name: "Shrub", time: "4:15 PM", stageMap: true, location: "Main Stage" },
+  { name: "Munhall Community Band", time: "5:45 PM", stageMap: true, location: "Main Stage" },
 ];
 
 const VENDORS = [
@@ -36,11 +36,45 @@ const INFO_ENTRIES = [
   { name: "Free Concert", detail: "No tickets needed — just show up!" },
   { name: "1:00 PM – 7:30 PM", detail: "Event hours" },
   { name: "Clairton Park Lodge", detail: "499-401 Gulch Way, Clairton, PA 15025" },
+  { name: "Restrooms", detail: "See the restroom map in Event Info" },
 ];
 
 function renderLineup() {
   const list = document.getElementById("lineup-list");
-  list.innerHTML = MUSICIANS.map((name) => `<li>${name}</li>`).join("");
+  list.innerHTML = MUSICIANS.map((m, i) => {
+    if (!m.stageMap) {
+      return `
+      <li>
+        <div class="lineup-row">
+          <span class="lineup-name"><span class="name-text">${m.name}</span></span>
+          <span class="lineup-time">${m.time}</span>
+        </div>
+      </li>`;
+    }
+    const mapId = `stage-map-${i}`;
+    return `
+    <li>
+      <div class="lineup-row">
+        <button type="button" class="lineup-name lineup-toggle" aria-expanded="false" aria-controls="${mapId}">
+          <span class="name-text">${m.name}</span>
+          <span class="toggle-icon" aria-hidden="true">▾</span>
+        </button>
+        <span class="lineup-time">${m.time}</span>
+      </div>
+      <div id="${mapId}" class="stage-map-panel" hidden>
+        <p class="stage-map-caption">${m.location} &middot; ${m.time}</p>
+        <img class="stage-map-thumb" src="assets/mainstage-map.png" alt="Main stage map for ${m.name}">
+      </div>
+    </li>`;
+  }).join("");
+
+  list.addEventListener("click", (e) => {
+    const btn = e.target.closest(".lineup-toggle");
+    if (!btn) return;
+    const expanded = btn.getAttribute("aria-expanded") === "true";
+    btn.setAttribute("aria-expanded", String(!expanded));
+    document.getElementById(btn.getAttribute("aria-controls")).hidden = expanded;
+  });
 }
 
 function renderVendors() {
@@ -62,10 +96,10 @@ function renderSearch(query) {
   }
 
   const matches = [
-    ...MUSICIANS.filter((n) => n.toLowerCase().includes(q)).map((n) => ({
-      name: n,
+    ...MUSICIANS.filter((m) => m.name.toLowerCase().includes(q)).map((m) => ({
+      name: m.name,
       type: "musician",
-      label: "Musician",
+      label: m.time,
     })),
     ...VENDORS.filter((n) => n.toLowerCase().includes(q)).map((n) => ({
       name: n,

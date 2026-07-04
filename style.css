@@ -310,13 +310,67 @@ body {
   font-size: 1.15rem;
   color: var(--ink);
   display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.6rem;
+}
+.lineup-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+.lineup-name {
+  display: flex;
   align-items: center;
   gap: 0.6rem;
 }
-.lineup-list li::before {
+.lineup-name::before {
   content: "♪";
   color: var(--teal);
   font-size: 1.3rem;
+}
+.lineup-time {
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--green-mid);
+  white-space: nowrap;
+}
+.lineup-toggle {
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  padding: 0;
+  cursor: pointer;
+}
+.lineup-toggle .toggle-icon {
+  color: var(--green-mid);
+  transition: transform 0.2s ease;
+}
+.lineup-toggle[aria-expanded="true"] .toggle-icon {
+  transform: rotate(180deg);
+}
+.lineup-toggle:hover .name-text,
+.lineup-toggle:focus-visible .name-text {
+  text-decoration: underline;
+}
+.stage-map-panel {
+  max-width: 360px;
+}
+.stage-map-caption {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--green-dark);
+}
+.stage-map-thumb {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 2px solid var(--green-dark);
 }
 
 /* Vendors */
@@ -344,7 +398,27 @@ body {
   font-weight: 600;
 }
 
+/* Venue map */
+.venue-map-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 1rem;
+  border-radius: var(--radius);
+  border: 3px solid var(--green-dark);
+}
+
 /* Info */
+.info-card-map { grid-column: 1 / -1; }
+.info-map-img {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  margin-top: 0.6rem;
+  border-radius: 10px;
+  border: 2px solid var(--green-dark);
+}
 .info-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
