@@ -138,36 +138,13 @@ body {
   color: var(--green-dark);
 }
 
-.hero-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  margin-bottom: 0.8rem;
+.hero-logo-img {
+  display: block;
+  margin: 0.4rem auto 0.6rem;
+  width: min(60%, 320px);
+  height: auto;
   position: relative;
 }
-.logo-circle {
-  width: 3.2rem;
-  height: 3.2rem;
-  border-radius: 50%;
-  background: var(--teal);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.6rem;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-}
-.logo-text {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  color: var(--ink);
-  font-family: var(--font-title);
-}
-.logo-text strong { font-size: 1.4rem; line-height: 1; }
-.logo-text span { font-size: 0.7rem; font-weight: 600; }
 
 .badge-register {
   background: var(--teal);
@@ -175,17 +152,6 @@ body {
   color: #fff;
   font-weight: 800;
   text-decoration: none;
-}
-
-.presents {
-  font-family: var(--font-title);
-  font-weight: 700;
-  color: var(--green-dark);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-size: 0.95rem;
-  margin: 0.6rem 0 0;
-  position: relative;
 }
 
 .title {
