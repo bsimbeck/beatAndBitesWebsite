@@ -103,18 +103,23 @@ body {
     linear-gradient(160deg, var(--green-light) 0%, var(--yellow-soft) 45%, var(--yellow) 65%, var(--orange) 100%);
   overflow: hidden;
 }
-.hero::before, .hero::after {
-  content: "";
+.hero-tree {
   position: absolute;
   bottom: -20px;
-  width: 45%;
-  max-width: 320px;
-  height: 60%;
-  background: radial-gradient(ellipse at center, rgba(74,122,61,0.55), rgba(74,122,61,0) 70%);
+  width: 30%;
+  max-width: 260px;
+  height: auto;
   pointer-events: none;
+  z-index: 0;
+  opacity: 0.9;
 }
-.hero::before { left: -60px; }
-.hero::after { right: -60px; }
+.hero-tree-left { left: -40px; }
+.hero-tree-right { right: -40px; transform: scaleX(-1); }
+
+.hero > *:not(.hero-tree) {
+  position: relative;
+  z-index: 1;
+}
 
 .hero-badges {
   display: flex;
