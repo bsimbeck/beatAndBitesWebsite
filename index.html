@@ -64,6 +64,16 @@
     <div id="search-results" class="search-results" hidden></div>
   </section>
 
+  <div id="detail-modal" class="detail-modal" hidden>
+    <div class="detail-modal-backdrop" data-close></div>
+    <div class="detail-modal-card" role="dialog" aria-modal="true" aria-labelledby="detail-modal-title">
+      <button type="button" class="detail-modal-close" data-close aria-label="Close">&times;</button>
+      <h3 id="detail-modal-title"></h3>
+      <p id="detail-modal-text"></p>
+      <img id="detail-modal-img" class="detail-modal-img" alt="">
+    </div>
+  </div>
+
   <section id="lineup" class="section">
     <h2>Featuring</h2>
     <ul class="lineup-list" id="lineup-list"></ul>
@@ -97,11 +107,6 @@
       <div class="info-card">
         <h3>Cost</h3>
         <p>Free Concert &mdash; open to everyone!</p>
-      </div>
-      <div class="info-card info-card-map">
-        <h3>Restrooms</h3>
-        <p>See the map below for restroom locations around the lodge.</p>
-        <img class="info-map-img" src="assets/restroomMap.jpeg" alt="Map showing restroom locations at Clairton Park Lodge">
       </div>
     </div>
     <div class="map-embed">
