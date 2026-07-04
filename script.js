@@ -8,11 +8,11 @@ const EVENT = {
 
 const MUSICIANS = [
   { name: "MCB Flute Choir", time: "1:25 PM" },
-  { name: "Folk Indie Bob", time: "1:30 PM", stageMap: true },
-  { name: "MCB Jazz", time: "2:50 PM", stageMap: true },
+  { name: "Folk Indie Bob", time: "1:30 PM", stageMap: true, location: "Main Stage" },
+  { name: "MCB Jazz", time: "2:50 PM", stageMap: true, location: "Main Stage" },
   { name: "MCB Woodwind Ensemble", time: "3:55 PM" },
-  { name: "Shrub", time: "4:15 PM", stageMap: true },
-  { name: "Munhall Community Band", time: "5:45 PM", stageMap: true },
+  { name: "Shrub", time: "4:15 PM", stageMap: true, location: "Main Stage" },
+  { name: "Munhall Community Band", time: "5:45 PM", stageMap: true, location: "Main Stage" },
 ];
 
 const VENDORS = [
@@ -61,7 +61,10 @@ function renderLineup() {
         </button>
         <span class="lineup-time">${m.time}</span>
       </div>
-      <img id="${mapId}" class="stage-map-thumb" src="assets/mainstage-map.png" alt="Main stage map for ${m.name}" hidden>
+      <div id="${mapId}" class="stage-map-panel" hidden>
+        <p class="stage-map-caption">${m.location} &middot; ${m.time}</p>
+        <img class="stage-map-thumb" src="assets/mainstage-map.png" alt="Main stage map for ${m.name}">
+      </div>
     </li>`;
   }).join("");
 

@@ -356,9 +356,18 @@ body {
 .lineup-toggle:focus-visible .name-text {
   text-decoration: underline;
 }
+.stage-map-panel {
+  max-width: 360px;
+}
+.stage-map-caption {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--green-dark);
+}
 .stage-map-thumb {
   width: 100%;
-  max-width: 360px;
   height: auto;
   border-radius: 10px;
   border: 2px solid var(--green-dark);
