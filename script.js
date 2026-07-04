@@ -7,12 +7,12 @@ const EVENT = {
 };
 
 const MUSICIANS = [
-  "Folk Indie Bob",
-  "Shrub",
-  "Munhall Community Band",
-  "MCB Jazz",
-  "MCB Woodwind Ensemble",
-  "MCB Flute Choir",
+  { name: "Folk Indie Bob", stageMap: true },
+  { name: "Shrub", stageMap: true },
+  { name: "Munhall Community Band", stageMap: true },
+  { name: "MCB Jazz", stageMap: true },
+  { name: "MCB Woodwind Ensemble" },
+  { name: "MCB Flute Choir" },
 ];
 
 const VENDORS = [
@@ -36,11 +36,33 @@ const INFO_ENTRIES = [
   { name: "Free Concert", detail: "No tickets needed — just show up!" },
   { name: "1:00 PM – 7:30 PM", detail: "Event hours" },
   { name: "Clairton Park Lodge", detail: "499-401 Gulch Way, Clairton, PA 15025" },
+  { name: "Restrooms", detail: "See the restroom map in Event Info" },
 ];
 
 function renderLineup() {
   const list = document.getElementById("lineup-list");
-  list.innerHTML = MUSICIANS.map((name) => `<li>${name}</li>`).join("");
+  list.innerHTML = MUSICIANS.map((m, i) => {
+    if (!m.stageMap) {
+      return `<li><span class="lineup-name">${m.name}</span></li>`;
+    }
+    const mapId = `stage-map-${i}`;
+    return `
+    <li>
+      <button type="button" class="lineup-name lineup-toggle" aria-expanded="false" aria-controls="${mapId}">
+        <span class="name-text">${m.name}</span>
+        <span class="toggle-icon" aria-hidden="true">▾</span>
+      </button>
+      <img id="${mapId}" class="stage-map-thumb" src="assets/mainstage-map.png" alt="Main stage map for ${m.name}" hidden>
+    </li>`;
+  }).join("");
+
+  list.addEventListener("click", (e) => {
+    const btn = e.target.closest(".lineup-toggle");
+    if (!btn) return;
+    const expanded = btn.getAttribute("aria-expanded") === "true";
+    btn.setAttribute("aria-expanded", String(!expanded));
+    document.getElementById(btn.getAttribute("aria-controls")).hidden = expanded;
+  });
 }
 
 function renderVendors() {
@@ -62,8 +84,8 @@ function renderSearch(query) {
   }
 
   const matches = [
-    ...MUSICIANS.filter((n) => n.toLowerCase().includes(q)).map((n) => ({
-      name: n,
+    ...MUSICIANS.filter((m) => m.name.toLowerCase().includes(q)).map((m) => ({
+      name: m.name,
       type: "musician",
       label: "Musician",
     })),
