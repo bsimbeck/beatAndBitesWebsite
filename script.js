@@ -7,12 +7,12 @@ const EVENT = {
 };
 
 const MUSICIANS = [
-  { name: "MCB Flute Choir", time: "1:25 PM" },
-  { name: "Folk Indie Bob", time: "1:30 PM", stageMap: true, location: "Main Stage" },
-  { name: "MCB Jazz", time: "2:50 PM", stageMap: true, location: "Main Stage" },
-  { name: "MCB Woodwind Ensemble", time: "3:55 PM" },
-  { name: "Shrub", time: "4:15 PM", stageMap: true, location: "Main Stage" },
-  { name: "Munhall Community Band", time: "5:45 PM", stageMap: true, location: "Main Stage" },
+  { name: "MCB Flute Choir", time: "1:25 PM", location: "Pavilion Stage", mapImage: "assets/pavilionStageMap.png" },
+  { name: "Folk Indie Bob", time: "1:30 PM", location: "Main Stage", mapImage: "assets/mainstage-map.png" },
+  { name: "MCB Jazz", time: "2:50 PM", location: "Main Stage", mapImage: "assets/mainstage-map.png" },
+  { name: "MCB Woodwind Ensemble", time: "3:55 PM", location: "Pavilion Stage", mapImage: "assets/pavilionStageMap.png" },
+  { name: "Shrub", time: "4:15 PM", location: "Main Stage", mapImage: "assets/mainstage-map.png" },
+  { name: "Munhall Community Band", time: "5:45 PM", location: "Main Stage", mapImage: "assets/mainstage-map.png" },
 ];
 
 const VENDORS = [
@@ -47,7 +47,7 @@ const INFO_ENTRIES = [
 function renderLineup() {
   const list = document.getElementById("lineup-list");
   list.innerHTML = MUSICIANS.map((m, i) => {
-    if (!m.stageMap) {
+    if (!m.mapImage) {
       return `
       <li>
         <div class="lineup-row">
@@ -68,7 +68,7 @@ function renderLineup() {
       </div>
       <div id="${mapId}" class="stage-map-panel" hidden>
         <p class="stage-map-caption">${m.location} &middot; ${m.time}</p>
-        <img class="stage-map-thumb" src="assets/mainstage-map.png" alt="Main stage map for ${m.name}">
+        <img class="stage-map-thumb" src="${m.mapImage}" alt="${m.location} map for ${m.name}">
       </div>
     </li>`;
   }).join("");
