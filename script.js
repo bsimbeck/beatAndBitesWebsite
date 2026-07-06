@@ -7,8 +7,8 @@ const EVENT = {
 };
 
 const MUSICIANS = [
-  { name: "MCB Woodwind Ensemble", time: "1:25 PM", location: "Pavilion Stage", mapImage: "assets/pavilionStageMap.png" },
   { name: "Folk Indie Bob", time: "1:30 PM", location: "Main Stage", mapImage: "assets/mainstage-map.png" },
+  { name: "MCB Woodwind Ensemble", time: "2:25 PM", location: "Pavilion Stage", mapImage: "assets/pavilionStageMap.png" },
   { name: "MCB Jazz", time: "2:50 PM", location: "Main Stage", mapImage: "assets/mainstage-map.png" },
   { name: "MCB Flute Choir", time: "3:55 PM", location: "Pavilion Stage", mapImage: "assets/pavilionStageMap.png" },
   { name: "Shrub", time: "4:15 PM", location: "Main Stage", mapImage: "assets/mainstage-map.png" },
