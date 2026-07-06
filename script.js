@@ -7,30 +7,40 @@ const EVENT = {
 };
 
 const MUSICIANS = [
-  { name: "MCB Flute Choir", time: "1:25 PM", location: "Pavilion Stage", mapImage: "assets/pavilionStageMap.png" },
+  { name: "MCB Woodwind Ensemble", time: "1:25 PM", location: "Pavilion Stage", mapImage: "assets/pavilionStageMap.png" },
   { name: "Folk Indie Bob", time: "1:30 PM", location: "Main Stage", mapImage: "assets/mainstage-map.png" },
   { name: "MCB Jazz", time: "2:50 PM", location: "Main Stage", mapImage: "assets/mainstage-map.png" },
-  { name: "MCB Woodwind Ensemble", time: "3:55 PM", location: "Pavilion Stage", mapImage: "assets/pavilionStageMap.png" },
+  { name: "MCB Flute Choir", time: "3:55 PM", location: "Pavilion Stage", mapImage: "assets/pavilionStageMap.png" },
   { name: "Shrub", time: "4:15 PM", location: "Main Stage", mapImage: "assets/mainstage-map.png" },
   { name: "Munhall Community Band", time: "5:45 PM", location: "Main Stage", mapImage: "assets/mainstage-map.png" },
 ];
 
+const VENDOR_MAP_IMAGE = "assets/VendorMap.png";
+const VENDOR_MAP_ALT = "Map showing vendor booth locations at Beats & Bites";
+
 const VENDORS = [
-  "Cutest Creations by Mary",
-  "Sewing by Janice",
-  "Pixie Dust Knots",
-  "Olive's Blanket Boutique",
-  "LynkdByLovella",
-  "Imagination Canvas Company",
-  "Hello My Friend",
-  "Genuine Reclaimed Wood Designs",
-  "A & B Handmade Gifts",
-  "Lynn and Lissie's Boutique",
-  "Star Kelley Creations",
-  "Folfyblu Arts",
-  "Mel's Crystals and Crafts",
-  "Oopsie Daisy Jewelry N'at",
+  { name: "Cutest Creations by Mary", description: "Light up wine bottles and items made out of diapers (motorcycles, guitars, wishing well, etc.)", booth: 7 },
+  { name: "Pixie Dust Knots", description: "Crochet items", booth: 16 },
+  { name: "LynkdByLovella Permanent Jewelry Boutique", description: "Permanent jewelry with kids options", booth: 8 },
+  { name: "Oopsie Daisy Jewelry N'at", description: "Charm bar and engraving", booth: 11 },
+  { name: "Hello My Friend, LLC", description: "Handmade greeting cards, gift tags and gift cards", booth: 10 },
+  { name: "A & B Handmade Gifts", description: "Laser engraved signs and embroidered towels, bags, and other miscellaneous items", booth: 1 },
+  { name: "Star Kelley Creations", description: "Resin items — keychains, décor, trinket trays, etc.", booth: 2 },
+  { name: "Mel's Crystals and Crafts", description: "Crystals and other crafts", booth: 9 },
+  { name: "Damsel in Defense", description: "Self defense tools for safety-minded women & their families", booth: 4 },
+  { name: "Sewing By Janice", description: "Table runners, coasters, key fobs, quilts, nut crackers, painted pots, trivet/hot pads, flower arrangements, wooden ornaments, carved pumpkins, mantle scarves, and handmade wall decorations", booth: 5 },
+  { name: "Olive's Blanket Boutique", description: "Blankets for humans and pets, dog toys, and press-on nails", booth: 12 },
+  { name: "Imagination Canvas Company", description: "Pre-printed canvas kits", booth: 3 },
+  { name: "Comfortable Soaks", description: "Natural healing products", booth: 17 },
+  { name: "Genuine Reclaimed Wood Designs", description: "Wood American flags, custom cornhole boards, man cave/game room decor, and other wood items", booth: 13 },
+  { name: "Lynn & Lissie's Boutique", description: "Purses, totes, wallets, and misc. accessories", booth: 14 },
+  { name: "FolfyBlu Arts", description: "Resin crafts such as tic-tac-toe boards, trays, dice, display items, and trinket jars; hand-made paintings and plant clippings", booth: 15 },
+  { name: "Watts Up Goodies", description: "Handmade jewelry, necklaces, bracelets, earrings, matching sets, keychains, magnets, seashell jewelry, and hair accessories", booth: 6 },
 ];
+
+function vendorLocation(v) {
+  return v.booth ? `Booth #${v.booth}` : "Food Truck Area";
+}
 
 const INFO_ENTRIES = [
   { name: "Free Concert", detail: "No tickets needed — just show up!" },
@@ -84,9 +94,22 @@ function renderLineup() {
 
 function renderVendors() {
   const grid = document.getElementById("vendor-grid");
-  grid.innerHTML =
-    VENDORS.map((name) => `<li>${name}</li>`).join("") +
-    `<li class="more">...and more!</li>`;
+  grid.innerHTML = VENDORS.map((v) => `
+    <li>
+      <button type="button" class="vendor-btn" data-name="${escapeHtml(v.name)}" data-detail="${escapeHtml(v.description)}" data-location="${escapeHtml(vendorLocation(v))}" data-map="${VENDOR_MAP_IMAGE}" data-map-alt="${escapeHtml(VENDOR_MAP_ALT)}">${escapeHtml(v.name)}</button>
+    </li>`).join("");
+
+  grid.addEventListener("click", (e) => {
+    const btn = e.target.closest(".vendor-btn");
+    if (!btn) return;
+    openDetailModal({
+      name: btn.dataset.name,
+      detail: btn.dataset.detail,
+      location: btn.dataset.location,
+      map: btn.dataset.map,
+      mapAlt: btn.dataset.mapAlt,
+    });
+  });
 }
 
 function renderSearch(query) {
@@ -106,10 +129,18 @@ function renderSearch(query) {
       type: "musician",
       label: m.time,
     })),
-    ...VENDORS.filter((n) => n.toLowerCase().includes(q)).map((n) => ({
-      name: n,
+    ...VENDORS.filter(
+      (v) =>
+        v.name.toLowerCase().includes(q) ||
+        v.description.toLowerCase().includes(q)
+    ).map((v) => ({
+      name: v.name,
       type: "vendor",
-      label: "Vendor",
+      label: vendorLocation(v),
+      detail: v.description,
+      location: vendorLocation(v),
+      map: VENDOR_MAP_IMAGE,
+      mapAlt: VENDOR_MAP_ALT,
     })),
     ...INFO_ENTRIES.filter(
       (e) =>
@@ -118,6 +149,7 @@ function renderSearch(query) {
       name: e.name,
       type: "info",
       label: e.detail,
+      detail: e.detail,
       map: e.map,
       mapAlt: e.mapAlt,
     })),
@@ -136,7 +168,7 @@ function renderSearch(query) {
     .map((m) => {
       const clickable = m.map ? " result-item-clickable" : "";
       const attrs = m.map
-        ? ` role="button" tabindex="0" data-name="${escapeHtml(m.name)}" data-detail="${escapeHtml(m.label)}" data-map="${escapeHtml(m.map)}" data-map-alt="${escapeHtml(m.mapAlt || "")}"`
+        ? ` role="button" tabindex="0" data-name="${escapeHtml(m.name)}" data-detail="${escapeHtml(m.detail || m.label)}" data-location="${escapeHtml(m.location || "")}" data-map="${escapeHtml(m.map)}" data-map-alt="${escapeHtml(m.mapAlt || "")}"`
         : "";
       return `
       <div class="result-item${clickable}"${attrs}>
@@ -147,9 +179,12 @@ function renderSearch(query) {
     .join("");
 }
 
-function openDetailModal({ name, detail, map, mapAlt }) {
+function openDetailModal({ name, detail, location, map, mapAlt }) {
   document.getElementById("detail-modal-title").textContent = name;
   document.getElementById("detail-modal-text").textContent = detail;
+  const locationEl = document.getElementById("detail-modal-location");
+  locationEl.textContent = location || "";
+  locationEl.hidden = !location;
   const img = document.getElementById("detail-modal-img");
   img.src = map;
   img.alt = mapAlt || `Map for ${name}`;
@@ -215,6 +250,7 @@ document.addEventListener("DOMContentLoaded", () => {
     openDetailModal({
       name: item.dataset.name,
       detail: item.dataset.detail,
+      location: item.dataset.location,
       map: item.dataset.map,
       mapAlt: item.dataset.mapAlt,
     });
