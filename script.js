@@ -36,6 +36,10 @@ const VENDORS = [
   { name: "Lynn & Lissie's Boutique", description: "Purses, totes, wallets, and misc. accessories", booth: 14 },
   { name: "FolfyBlu Arts", description: "Resin crafts such as tic-tac-toe boards, trays, dice, display items, and trinket jars; hand-made paintings and plant clippings", booth: 15 },
   { name: "Watts Up Goodies", description: "Handmade jewelry, necklaces, bracelets, earrings, matching sets, keychains, magnets, seashell jewelry, and hair accessories", booth: 6 },
+  { name: "Totaro's Food Truck", description: "Burgers, hoagies, meatball sandwiches, cheese steaks, salad with steak or chicken, side salad, fries, chicken nuggets", website: "https://www.facebook.com/people/Totaros-Brothers/61552970893860/" },
+  { name: "Beedle's Ice Cream", description: "Nostalgic ice cream treats", website: "https://www.beedles.com/" },
+  { name: "Little C's Concessions", description: "Funnel cakes, specialty funnel cakes, deep fried oreos, fresh squeezed lemonade, flavored lemonade, hot dogs, deep fried pretzels, and nachos", website: "https://www.facebook.com/little.c.s.concessions/photos" },
+  { name: "Arsenal Cider", description: "Alcoholic ciders and meads", website: "https://www.arsenalciderhouse.com/" },
 ];
 
 function vendorLocation(v) {
@@ -96,7 +100,7 @@ function renderVendors() {
   const grid = document.getElementById("vendor-grid");
   grid.innerHTML = VENDORS.map((v) => `
     <li>
-      <button type="button" class="vendor-btn" data-name="${escapeHtml(v.name)}" data-detail="${escapeHtml(v.description)}" data-location="${escapeHtml(vendorLocation(v))}" data-map="${VENDOR_MAP_IMAGE}" data-map-alt="${escapeHtml(VENDOR_MAP_ALT)}">${escapeHtml(v.name)}</button>
+      <button type="button" class="vendor-btn" data-name="${escapeHtml(v.name)}" data-detail="${escapeHtml(v.description)}" data-location="${escapeHtml(vendorLocation(v))}" data-website="${escapeHtml(v.website || "")}" data-map="${VENDOR_MAP_IMAGE}" data-map-alt="${escapeHtml(VENDOR_MAP_ALT)}">${escapeHtml(v.name)}</button>
     </li>`).join("");
 
   grid.addEventListener("click", (e) => {
@@ -106,6 +110,7 @@ function renderVendors() {
       name: btn.dataset.name,
       detail: btn.dataset.detail,
       location: btn.dataset.location,
+      website: btn.dataset.website,
       map: btn.dataset.map,
       mapAlt: btn.dataset.mapAlt,
     });
@@ -139,6 +144,7 @@ function renderSearch(query) {
       label: vendorLocation(v),
       detail: v.description,
       location: vendorLocation(v),
+      website: v.website,
       map: VENDOR_MAP_IMAGE,
       mapAlt: VENDOR_MAP_ALT,
     })),
@@ -168,7 +174,7 @@ function renderSearch(query) {
     .map((m) => {
       const clickable = m.map ? " result-item-clickable" : "";
       const attrs = m.map
-        ? ` role="button" tabindex="0" data-name="${escapeHtml(m.name)}" data-detail="${escapeHtml(m.detail || m.label)}" data-location="${escapeHtml(m.location || "")}" data-map="${escapeHtml(m.map)}" data-map-alt="${escapeHtml(m.mapAlt || "")}"`
+        ? ` role="button" tabindex="0" data-name="${escapeHtml(m.name)}" data-detail="${escapeHtml(m.detail || m.label)}" data-location="${escapeHtml(m.location || "")}" data-website="${escapeHtml(m.website || "")}" data-map="${escapeHtml(m.map)}" data-map-alt="${escapeHtml(m.mapAlt || "")}"`
         : "";
       return `
       <div class="result-item${clickable}"${attrs}>
@@ -179,12 +185,15 @@ function renderSearch(query) {
     .join("");
 }
 
-function openDetailModal({ name, detail, location, map, mapAlt }) {
+function openDetailModal({ name, detail, location, website, map, mapAlt }) {
   document.getElementById("detail-modal-title").textContent = name;
   document.getElementById("detail-modal-text").textContent = detail;
   const locationEl = document.getElementById("detail-modal-location");
   locationEl.textContent = location || "";
   locationEl.hidden = !location;
+  const linkEl = document.getElementById("detail-modal-link");
+  linkEl.href = website || "";
+  linkEl.hidden = !website;
   const img = document.getElementById("detail-modal-img");
   img.src = map;
   img.alt = mapAlt || `Map for ${name}`;
@@ -251,6 +260,7 @@ document.addEventListener("DOMContentLoaded", () => {
       name: item.dataset.name,
       detail: item.dataset.detail,
       location: item.dataset.location,
+      website: item.dataset.website,
       map: item.dataset.map,
       mapAlt: item.dataset.mapAlt,
     });
