@@ -37,10 +37,11 @@ const VENDORS = [
   { name: "FolfyBlu Arts", description: "Resin crafts such as tic-tac-toe boards, trays, dice, display items, and trinket jars; hand-made paintings and plant clippings", booth: 15 },
   { name: "Watts Up Goodies", description: "Handmade jewelry, necklaces, bracelets, earrings, matching sets, keychains, magnets, seashell jewelry, and hair accessories", booth: 6 },
   { name: "Mami's Natural Essentials", description: "Candles, wax melts, perfume, cologne, and car defusers", booth: 18 },
-  { name: "Totaro's Food Truck", description: "Burgers, hoagies, meatball sandwiches, cheese steaks, salad with steak or chicken, side salad, fries, chicken nuggets", website: "https://www.facebook.com/people/Totaros-Brothers/61552970893860/" },
-  { name: "Beedle's Ice Cream", description: "Nostalgic ice cream treats", website: "https://www.beedles.com/" },
-  { name: "Little C's Concessions", description: "Funnel cakes, specialty funnel cakes, deep fried oreos, fresh squeezed lemonade, flavored lemonade, hot dogs, deep fried pretzels, and nachos", website: "https://www.facebook.com/little.c.s.concessions/photos" },
+  { name: "Ash & Kris Kitchen", description: "", website: "https://www.ashkris.com/" },
   { name: "Arsenal Cider", description: "Alcoholic ciders and meads", website: "https://www.arsenalciderhouse.com/" },
+  { name: "Beedle's Ice Cream", description: "Nostalgic ice cream treats", website: "https://www.beedles.com/" },
+  { name: "Totaro's Food Truck", description: "Burgers, hoagies, meatball sandwiches, cheese steaks, salad with steak or chicken, side salad, fries, chicken nuggets", website: "https://www.facebook.com/people/Totaros-Brothers/61552970893860/" },
+  { name: "Little C's Concessions", description: "Funnel cakes, specialty funnel cakes, deep fried oreos, fresh squeezed lemonade, flavored lemonade, hot dogs, deep fried pretzels, and nachos", website: "https://www.facebook.com/little.c.s.concessions/photos" },
 ];
 
 function vendorLocation(v) {
