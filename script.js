@@ -37,7 +37,7 @@ const VENDORS = [
   { name: "FolfyBlu Arts", description: "Resin crafts such as tic-tac-toe boards, trays, dice, display items, and trinket jars; hand-made paintings and plant clippings", booth: 15, website: "https://www.facebook.com/FolfyBluArts?mibextid=wwXIfr&rdid=1DXjXgaUWCms7mUp&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1Cx3oBN2aM%2F%3Fmibextid%3DwwXIfr" },
   { name: "Watts Up Goodies", description: "Handmade jewelry, necklaces, bracelets, earrings, matching sets, keychains, magnets, seashell jewelry, and hair accessories", booth: 6, website: "https://www.etsy.com/shop/wattsupgoodies/?etsrc=sdt" },
   { name: "Mami's Natural Essentials", description: "Candles, wax melts, perfume, cologne, and car defusers", booth: 18, website: "https://mamisessentials.com/" },
-  { name: "Ash & Kris Kitchen", description: "", website: "https://www.ashkris.com/" },
+  { name: "Ash & Kris Kitchen", description: "Hummus, baba ghanoush, stuffed grape leaves, falafel, pita bread, double fried French fries, lamb gyro sandwich, chicken shawarma sandwich, falafel sandwich, lamb gyro rice platter, chicken shawarma rice platter, falafel rice platter, baklava, and Coca-Cola and Pepsi products", website: "https://www.ashkris.com/" },
   { name: "Arsenal Cider", description: "Alcoholic ciders and meads", website: "https://www.arsenalciderhouse.com/" },
   { name: "Beedle's Ice Cream", description: "Nostalgic ice cream treats", website: "https://www.beedles.com/" },
   { name: "Totaro's Food Truck", description: "Burgers, hoagies, meatball sandwiches, cheese steaks, salad with steak or chicken, side salad, fries, chicken nuggets", website: "https://www.facebook.com/people/Totaros-Brothers/61552970893860/" },
