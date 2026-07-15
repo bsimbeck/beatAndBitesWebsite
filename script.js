@@ -128,6 +128,10 @@ const INFO_ENTRIES = [
   { name: "1:00 PM – 7:30 PM", detail: "Event hours" },
   { name: "Clairton Park Lodge", detail: "499-401 Gulch Way, Clairton, PA 15025" },
   {
+    name: "Weather",
+    detail: "This event is rain or shine, but in the event of severe storms please check this website for any schedule changes. Clairton Park Lodge and pavilion does provide significant shelter for attendees in the event of rain.",
+  },
+  {
     name: "Restrooms",
     detail: "Located near the pavilion and baseball field",
     map: "assets/restroomMap.jpeg",
