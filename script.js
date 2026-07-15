@@ -8,11 +8,86 @@ const EVENT = {
 
 const MUSICIANS = [
   { name: "Folk Indie Bob", time: "1:30 PM", location: "Main Stage", mapImage: "assets/mainstage-map.png" },
-  { name: "MCB Woodwind Ensemble", time: "2:25 PM", location: "Pavilion Stage", mapImage: "assets/pavilionStageMap.png" },
-  { name: "MCB Jazz", time: "2:50 PM", location: "Main Stage", mapImage: "assets/mainstage-map.png" },
-  { name: "MCB Flute Choir", time: "3:55 PM", location: "Pavilion Stage", mapImage: "assets/pavilionStageMap.png" },
+  {
+    name: "MCB Woodwind Ensemble",
+    time: "2:25 PM",
+    location: "Pavilion Stage",
+    mapImage: "assets/pavilionStageMap.png",
+    director: "Libby Riconda",
+    setlist: [
+      { title1: "Anitra's Dance", composer: "By Edvard Grieg, Arranged by James Christensen" },
+      { title1: "Novelette", composer: "By Kevin Kaisershot" },
+    ],
+  },
+  {
+    name: "MCB Jazz",
+    time: "2:50 PM",
+    location: "Main Stage",
+    mapImage: "assets/mainstage-map.png",
+    director: "Rick Porter",
+    setlist: [
+      { title1: "The Muppet Show Theme", composer: "by Jim Henson and Sam Pottle, Arranged by Jerry Nowak" },
+      { title1: "In the Mood", title2: "As played by 'Glenn Miller'", composer: "Joe Garland" },
+      { title1: "Peter Gunn", composer: "Music by Henry Mancini, Arranged by Paul Jennings" },
+      { title1: "Contessa", composer: "By Lennie Niehaus" },
+      { title1: "Vehicle", composer: "By James M. Peterik, Arranged by Paul Jennings" },
+      { title1: "Fly Me To The Moon", composer: "Words and Music by Bart Howard, Arranged by Sammy Nestico" },
+      { title1: "Pennsylvania 6-5000", composer: "By Glenn Miller" },
+      { title1: "Old Devil Moon", composer: "By B. Lane and E. Y. Harburg, Arranged by Sammy Nestico" },
+      { title1: "Just Friends", composer: "Music by John Klenner, Lyrics by Sam M. Lewis, Arranged by Joe Jackson" },
+      { title1: "The Girl from Ipanema", composer: "Music by Antonio Carlos Jobim, English words by Norman Gimbel, Original Words by Vinicius De Moraes, Arranged by Glenn Osser" },
+      { title1: "A Time For Love", composer: "Words by Paul Francis Webster, Music by Johnny Mandel, Arranged by Sammy Nestico" },
+      { title1: "Moonlight Serenade", title2: "As Played by 'Glenn Miller'", composer: "By Glenn Miller" },
+      { title1: "April in Paris", composer: "Words by E. Y. Harburg, Music by Vernon Duke, Arranged by Bob Lowden" },
+    ],
+  },
+  {
+    name: "MCB Flute Choir",
+    time: "3:55 PM",
+    location: "Pavilion Stage",
+    mapImage: "assets/pavilionStageMap.png",
+    director: "Libby Riconda",
+    setlist: [
+      { title1: "Little Red Monkey", composer: "by Jack Jordan, Adapted for Flute Choir by Kathy Farmer" },
+      { title1: "Beckett's Whisper", composer: "By Ron Korb" },
+      { title1: "Siyahamba", composer: "Arranged by Amy Rice-Young" },
+    ],
+  },
   { name: "Shrub", time: "4:15 PM", location: "Main Stage", mapImage: "assets/mainstage-map.png" },
-  { name: "Munhall Community Band", time: "5:45 PM", location: "Main Stage", mapImage: "assets/mainstage-map.png" },
+  {
+    name: "Munhall Community Band",
+    time: "5:45 PM",
+    location: "Main Stage",
+    mapImage: "assets/mainstage-map.png",
+    setlist: [
+      { title1: "America, The Beautiful", composer: "Samuel Augustus Ward, Arranged for Band by Carmen Dragon" },
+      { title1: "A Swinging Safari", composer: "Bert Kaempfert, Arranged by Ted Parson" },
+      { title1: "The Pride of Pittsburgh", composer: "John Philip Sousa" },
+      {
+        title1: "Billy Joel In Concert",
+        title2: "Featuring Piano Man, It's Still Rock and Roll to Me, Just the Way You Are, Uptown Girl, and You May Be Right",
+        composer: "Words and Music by Billy Joel, Arranged by Paul Murtha",
+      },
+      { title1: "Sea Songs", composer: "R. Vaughan Williams" },
+      { title1: "Game of Thrones", composer: "Music By Ramin Djawadi, Arranged by Jay Bocook, Percussion Arrangement by Omar Carmenates" },
+      { title1: "Theme From L'Arlesiene Suite No. 1", composer: "By Georges Bizet, Arranged by Jerry Nowak" },
+      { title1: "Marche Slave", composer: "By Piotr Ilyitch Tchaikovsky, Arranged by Dave Henning, Percussion by Alan Keown" },
+      { title1: "Da Doo Ron Ron", composer: "Words and Music by Ellie Greenwich, Jeff Barry, and Phil Spector. Arranged by Doug Adams" },
+      { title1: "Rock This Town", composer: "Words and Music by Brian Setzer, Arranged by Nick Baratta" },
+      {
+        title1: "United States Armed Forces Salute",
+        title2: "Featuring The Army Goes Rolling Along, Marines' Hymn, Anchors Aweigh, The U.S. Air Force Song, and Semper Paratus (Always Ready)",
+        composer: "Arranged by Douglas E. Wagner",
+      },
+      { title1: "A Fifth of Beethoven", title2: 'As featured in "Mrs. America."', composer: "By Walter Murphy, Arranged by John Ivor Holland" },
+      {
+        title1: "Doctor Who: Through Time and Space",
+        title2: "Featuring Doctor Who Theme XI, Martha's Theme, The Dark and Endless Dalek Night, Rose's Theme, The Cybermen, The Doctor's Theme, and I am the Doctor",
+        composer: "By Murry Gold, Arranged by Robert Buckley",
+      },
+      { title1: "Raiders of the Lost Ark Medley", title2: "Featuring Raiders March and Marion's Theme", composer: "Music by John Williams, Transcribed by Jack Bullock" },
+    ],
+  },
 ];
 
 const VENDOR_MAP_IMAGE = "assets/VendorMap.png";
@@ -84,6 +159,7 @@ function renderLineup() {
       </div>
       <div id="${mapId}" class="stage-map-panel" hidden>
         <p class="stage-map-caption">${m.location} &middot; ${m.time}</p>
+        ${renderSetlist(m)}
         <img class="stage-map-thumb" src="${m.mapImage}" alt="${m.location} map for ${m.name}">
       </div>
     </li>`;
@@ -96,6 +172,24 @@ function renderLineup() {
     btn.setAttribute("aria-expanded", String(!expanded));
     document.getElementById(btn.getAttribute("aria-controls")).hidden = expanded;
   });
+}
+
+function renderSetlist(m) {
+  if (!m.setlist) return "";
+  const director = m.director
+    ? `<p class="setlist-director">Under the Direction of ${escapeHtml(m.director)}</p>`
+    : "";
+  const songs = m.setlist
+    .map(
+      (song) => `
+      <li class="setlist-item">
+        <span class="setlist-title1">${escapeHtml(song.title1)}</span>
+        ${song.title2 ? `<span class="setlist-title2">${escapeHtml(song.title2)}</span>` : ""}
+        <span class="setlist-composer">${escapeHtml(song.composer)}</span>
+      </li>`
+    )
+    .join("");
+  return `${director}<ol class="setlist">${songs}</ol>`;
 }
 
 function renderVendors() {
