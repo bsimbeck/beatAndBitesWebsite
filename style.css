@@ -449,7 +449,7 @@ body {
   text-decoration: underline;
 }
 .stage-map-panel {
-  max-width: 360px;
+  max-width: 420px;
 }
 .stage-map-caption {
   margin: 0 0 0.4rem;
@@ -463,6 +463,40 @@ body {
   height: auto;
   border-radius: 10px;
   border: 2px solid var(--green-dark);
+}
+.setlist-director {
+  margin: 0 0 0.6rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--green-dark);
+}
+.setlist {
+  list-style: decimal;
+  margin: 0 0 0.8rem;
+  padding-left: 1.3rem;
+  display: grid;
+  gap: 0.5rem;
+}
+.setlist-item {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-body);
+}
+.setlist-title1 {
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+.setlist-title2 {
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--ink);
+}
+.setlist-composer {
+  font-size: 0.8rem;
+  color: var(--green-mid);
 }
 
 /* Vendors */
