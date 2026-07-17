@@ -2,8 +2,8 @@ const EVENT = {
   title: "Beats & Bites",
   venue: "Clairton Park Lodge",
   address: "499-401 Gulch Way, Clairton, PA 15025",
-  start: "2026-07-18T13:00:00",
-  end: "2026-07-18T19:30:00",
+  start: "2026-09-27T13:00:00",
+  end: "2026-09-27T19:30:00",
 };
 
 const MUSICIANS = [
