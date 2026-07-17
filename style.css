@@ -37,6 +37,16 @@ body {
 }
 .skip-link:focus { left: 0; }
 
+/* Alert banner */
+.alert-banner {
+  background: #c0392b;
+  color: #fff;
+  text-align: center;
+  font-weight: 800;
+  padding: 0.7rem 1.2rem;
+  z-index: 60;
+}
+
 /* Top nav */
 .topnav {
   position: sticky;
