@@ -118,8 +118,6 @@ const VENDORS = [
   { name: "Frank Halling's Midnight Munchies", description: "Mac and cheese, French fries, chicken sandwiches, burgers, gyros, funnel cake, and Italian ice", truckBooth: 2, website: "https://www.facebook.com/p/Midnight-Munchies-Food-Stand-61555884842641/" },
   { name: "Beedle's Ice Cream", description: "Nostalgic ice cream treats", truckBooth: 3, website: "https://www.beedles.com/" },
   { name: "Totaro's Food Truck", description: "Burgers, hoagies, meatball sandwiches, cheese steaks, salad with steak or chicken, side salad, fries, chicken nuggets", truckBooth: 4, website: "https://www.facebook.com/people/Totaros-Brothers/61552970893860/" },
-  { name: "Little C's Concessions", description: "Funnel cakes, specialty funnel cakes, deep fried oreos, fresh squeezed lemonade, flavored lemonade, hot dogs, deep fried pretzels, and nachos", truckBooth: 5, website: "https://www.facebook.com/little.c.s.concessions/photos" },
-  { name: "Arsenal Cider", description: "Alcoholic ciders and meads", truckBooth: 5, website: "https://www.arsenalciderhouse.com/" },
 ];
 
 function vendorLocation(v) {
