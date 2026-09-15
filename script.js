@@ -95,9 +95,9 @@ const VENDOR_MAP_ALT = "Map showing vendor booth locations at Beats & Bites";
 
 const VENDORS = [
   { name: "Cutest Creations by Mary", description: "Light up wine bottles and items made out of diapers (motorcycles, guitars, wishing well, etc.)", booth: 7 },
-  { name: "Pixie Dust Knots", description: "Crochet items", booth: 16, website: "https://www.instagram.com/pixie_dust_knots?utm_source=qr" },
-  { name: "LynkdByLovella Permanent Jewelry Boutique", description: "Permanent jewelry with kids options", booth: 3, website: "https://www.instagram.com/lovellawellness" },
-  { name: "Oopsie Daisy Jewelry N'at", description: "Charm bar and engraving", booth: 11, website: "https://www.instagram.com/oopsiedaisyjewelry_n.at" },
+  { name: "Made with Love", description: "Rice bags, burp cloths, jar openers, and zipper makeup bags", booth: 16 },
+  { name: "Brilee Boutique", description: "Permanent jewelry with kids options", booth: 3, website: "https://www.facebook.com/BrileeBoutique/" },
+  { name: "Oopsie Daisy Jewelry N'at", description: "Charm bar and engraving", booth: 19, website: "https://www.instagram.com/oopsiedaisyjewelry_n.at" },
   { name: "Hello My Friend, LLC", description: "Handmade greeting cards, gift tags and gift cards", booth: 10, website: "https://www.etsy.com/shop/Hellomyfriendllc?etsrc=sdt" },
   { name: "A & B Handmade Gifts", description: "Laser engraved signs and embroidered towels, bags, and other miscellaneous items", booth: 1, website: "https://www.facebook.com/profile.php?id=100094131791691" },
   { name: "Star Kelley Creations", description: "Resin items — keychains, décor, trinket trays, etc.", booth: 2, website: "https://starkelleycreations.com/" },
@@ -105,6 +105,7 @@ const VENDORS = [
   { name: "Damsel in Defense", description: "Self defense tools for safety-minded women & their families", booth: 4, website: "https://damselindefense.net/?ref=Carmyprotects" },
   { name: "Sewing By Janice", description: "Table runners, coasters, key fobs, quilts, nut crackers, painted pots, trivet/hot pads, flower arrangements, wooden ornaments, carved pumpkins, mantle scarves, and handmade wall decorations", booth: 5 },
   { name: "Olive's Blanket Boutique", description: "Blankets for humans and pets, dog toys, and press-on nails", booth: 12, website: "https://www.facebook.com/OlivesBlankets?mibextid=wwXIfr&rdid=9QEMCuZqN2D1VGaf&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1EZZRyeWzu%2F%3Fmibextid%3DwwXIfr" },
+  { name: "Wags, Wiggles, and Whiskers", description: "Dog treats, pet scarves, cat toys, treat jars, jewelry, badge reels, and assorted gift items for pets and their humans", booth: 11, website: "https://www.facebook.com/groups/365235400221553/" },
   { name: "Imagination Canvas Company", description: "Pre-printed canvas kits", booth: 8, website: "https://www.facebook.com/people/Imagination-Canvas-Co/61589542648898/" },
   { name: "Comfortable Soaks", description: "Natural healing products", booth: 17, website: "https://comfortablesoaks.square.site/s/shop" },
   { name: "Genuine Reclaimed Wood Designs", description: "Wood American flags, custom cornhole boards, man cave/game room decor, and other wood items", booth: 13, website: "https://www.facebook.com/photo/?fbid=10216983090749564&set=p.10216983090749564" },
@@ -112,15 +113,19 @@ const VENDORS = [
   { name: "FolfyBlu Arts", description: "Resin crafts such as tic-tac-toe boards, trays, dice, display items, and trinket jars; hand-made paintings and plant clippings", booth: 15, website: "https://www.facebook.com/FolfyBluArts?mibextid=wwXIfr&rdid=1DXjXgaUWCms7mUp&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1Cx3oBN2aM%2F%3Fmibextid%3DwwXIfr" },
   { name: "Watts Up Goodies", description: "Handmade jewelry, necklaces, bracelets, earrings, matching sets, keychains, magnets, seashell jewelry, and hair accessories", booth: 6, website: "https://www.etsy.com/shop/wattsupgoodies/?etsrc=sdt" },
   { name: "Mami's Natural Essentials", description: "Candles, wax melts, perfume, cologne, and car defusers", booth: 18, website: "https://mamisessentials.com/" },
-  { name: "Ash & Kris Kitchen", description: "Hummus, baba ghanoush, stuffed grape leaves, falafel, pita bread, double fried French fries, lamb gyro sandwich, chicken shawarma sandwich, falafel sandwich, lamb gyro rice platter, chicken shawarma rice platter, falafel rice platter, baklava, and Coca-Cola and Pepsi products", website: "https://www.ashkris.com/" },
-  { name: "Arsenal Cider", description: "Alcoholic ciders and meads", website: "https://www.arsenalciderhouse.com/" },
-  { name: "Beedle's Ice Cream", description: "Nostalgic ice cream treats", website: "https://www.beedles.com/" },
-  { name: "Totaro's Food Truck", description: "Burgers, hoagies, meatball sandwiches, cheese steaks, salad with steak or chicken, side salad, fries, chicken nuggets", website: "https://www.facebook.com/people/Totaros-Brothers/61552970893860/" },
-  { name: "Little C's Concessions", description: "Funnel cakes, specialty funnel cakes, deep fried oreos, fresh squeezed lemonade, flavored lemonade, hot dogs, deep fried pretzels, and nachos", website: "https://www.facebook.com/little.c.s.concessions/photos" },
+  { name: "Markeeta C. Art", description: "Face painting", website: "https://mcart214.square.site/" },
+  { name: "Ash & Kris Kitchen", description: "Hummus, baba ghanoush, stuffed grape leaves, falafel, pita bread, double fried French fries, lamb gyro sandwich, chicken shawarma sandwich, falafel sandwich, lamb gyro rice platter, chicken shawarma rice platter, falafel rice platter, baklava, and Coca-Cola and Pepsi products", truckBooth: 1, website: "https://www.ashkris.com/" },
+  { name: "Frank Halling's Midnight Munchies", description: "Mac and cheese, French fries, chicken sandwiches, burgers, gyros, funnel cake, and Italian ice", truckBooth: 2, website: "https://www.facebook.com/p/Midnight-Munchies-Food-Stand-61555884842641/" },
+  { name: "Beedle's Ice Cream", description: "Nostalgic ice cream treats", truckBooth: 3, website: "https://www.beedles.com/" },
+  { name: "Totaro's Food Truck", description: "Burgers, hoagies, meatball sandwiches, cheese steaks, salad with steak or chicken, side salad, fries, chicken nuggets", truckBooth: 4, website: "https://www.facebook.com/people/Totaros-Brothers/61552970893860/" },
+  { name: "Little C's Concessions", description: "Funnel cakes, specialty funnel cakes, deep fried oreos, fresh squeezed lemonade, flavored lemonade, hot dogs, deep fried pretzels, and nachos", truckBooth: 5, website: "https://www.facebook.com/little.c.s.concessions/photos" },
+  { name: "Arsenal Cider", description: "Alcoholic ciders and meads", truckBooth: 5, website: "https://www.arsenalciderhouse.com/" },
 ];
 
 function vendorLocation(v) {
-  return v.booth ? `Booth #${v.booth}` : "Food Truck Area";
+  if (v.truckBooth) return `Food Truck Area, Booth #${v.truckBooth}`;
+  if (v.booth) return `Booth #${v.booth}`;
+  return "Location TBA";
 }
 
 const INFO_ENTRIES = [
