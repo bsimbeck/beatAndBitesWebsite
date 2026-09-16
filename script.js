@@ -7,10 +7,10 @@ const EVENT = {
 };
 
 const MUSICIANS = [
-  { name: "Folk Indie Bob", time: "1:30 PM", location: "Main Stage", mapImage: "assets/mainstage-map.png" },
+  { name: "Folk Indie Bob", time: "1:15 PM – 2:00 PM", location: "Main Stage", mapImage: "assets/mainstage-map.png" },
   {
     name: "MCB Woodwind Ensemble",
-    time: "2:25 PM",
+    time: "2:15 PM – 2:25 PM",
     location: "Pavilion Stage",
     mapImage: "assets/pavilionStageMap.png",
     director: "Libby Riconda",
@@ -21,7 +21,7 @@ const MUSICIANS = [
   },
   {
     name: "MCB Jazz",
-    time: "2:50 PM",
+    time: "2:45 PM – 3:30 PM",
     location: "Main Stage",
     mapImage: "assets/mainstage-map.png",
     director: "Rick Porter",
@@ -43,7 +43,7 @@ const MUSICIANS = [
   },
   {
     name: "MCB Flute Choir",
-    time: "3:55 PM",
+    time: "3:45 PM – 4:00 PM",
     location: "Pavilion Stage",
     mapImage: "assets/pavilionStageMap.png",
     director: "Libby Riconda",
@@ -53,10 +53,10 @@ const MUSICIANS = [
       { title1: "Siyahamba", composer: "Arranged by Amy Rice-Young" },
     ],
   },
-  { name: "Shrub", time: "4:15 PM", location: "Main Stage", mapImage: "assets/mainstage-map.png" },
+  { name: "Shrub", time: "4:00 PM – 4:45 PM", location: "Main Stage", mapImage: "assets/mainstage-map.png" },
   {
     name: "Munhall Community Band",
-    time: "5:45 PM",
+    time: "5:15 PM – 6:15 PM",
     location: "Main Stage",
     mapImage: "assets/mainstage-map.png",
     setlist: [
