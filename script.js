@@ -86,7 +86,6 @@ const VENDORS = [
   { name: "Brilee Boutique", description: "Permanent jewelry with kids options", booth: 3, website: "https://www.facebook.com/BrileeBoutique/" },
   { name: "Oopsie Daisy Jewelry N'at", description: "Charm bar and engraving", booth: 19, website: "https://www.instagram.com/oopsiedaisyjewelry_n.at" },
   { name: "Hello My Friend, LLC", description: "Handmade greeting cards, gift tags and gift cards", booth: 10, website: "https://www.etsy.com/shop/Hellomyfriendllc?etsrc=sdt" },
-  { name: "A & B Handmade Gifts", description: "Laser engraved signs and embroidered towels, bags, and other miscellaneous items", booth: 1, website: "https://www.facebook.com/profile.php?id=100094131791691" },
   { name: "Star Kelley Creations", description: "Resin items — keychains, décor, trinket trays, etc.", booth: 2, website: "https://starkelleycreations.com/" },
   { name: "Mel's Crystals and Crafts", description: "Crystals and other crafts", booth: 9, website: "https://www.facebook.com/profile.php?id=100083115505550&mibextid=wwXIfr&rdid=O0QdSGvkTBqDUvkQ&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BDyGrxadu%2F%3Fmibextid%3DwwXIfr" },
   { name: "Damsel in Defense", description: "Self defense tools for safety-minded women & their families", booth: 4, website: "https://damselindefense.net/?ref=Carmyprotects" },
