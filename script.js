@@ -48,7 +48,7 @@ const MUSICIANS = [
       { title1: "Siyahamba", composer: "Arranged by Amy Rice-Young" },
     ],
   },
-  { name: "Shrub", time: "4:00 PM – 4:45 PM", location: "Main Stage", mapImage: "assets/mainstage-map.png" },
+  { name: "Shrub (of Pittsburgh)", time: "4:00 PM – 4:45 PM", location: "Main Stage", mapImage: "assets/mainstage-map.png" },
   {
     name: "Munhall Community Band",
     time: "5:15 PM – 6:15 PM",
@@ -99,7 +99,6 @@ const VENDORS = [
   { name: "FolfyBlu Arts", description: "Resin crafts such as tic-tac-toe boards, trays, dice, display items, and trinket jars; hand-made paintings and plant clippings", booth: 15, website: "https://www.facebook.com/FolfyBluArts?mibextid=wwXIfr&rdid=1DXjXgaUWCms7mUp&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1Cx3oBN2aM%2F%3Fmibextid%3DwwXIfr" },
   { name: "Watts Up Goodies", description: "Handmade jewelry, necklaces, bracelets, earrings, matching sets, keychains, magnets, seashell jewelry, and hair accessories", booth: 6, website: "https://www.etsy.com/shop/wattsupgoodies/?etsrc=sdt" },
   { name: "Mami's Natural Essentials", description: "Candles, wax melts, perfume, cologne, and car defusers", booth: 18, website: "https://mamisessentials.com/" },
-  { name: "Markeeta C. Art", description: "Face painting", website: "https://mcart214.square.site/" },
   { name: "Ash & Kris Kitchen", description: "Hummus, baba ghanoush, stuffed grape leaves, falafel, pita bread, double fried French fries, lamb gyro sandwich, chicken shawarma sandwich, falafel sandwich, lamb gyro rice platter, chicken shawarma rice platter, falafel rice platter, baklava, and Coca-Cola and Pepsi products", truckBooth: 1, website: "https://www.ashkris.com/" },
   { name: "Frank Halling's Midnight Munchies", description: "Mac and cheese, French fries, chicken sandwiches, burgers, gyros, funnel cake, and Italian ice", truckBooth: 2, website: "https://www.facebook.com/p/Midnight-Munchies-Food-Stand-61555884842641/" },
   { name: "Beedle's Ice Cream", description: "Nostalgic ice cream treats", truckBooth: 3, website: "https://www.beedles.com/" },
